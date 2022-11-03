@@ -36,9 +36,13 @@ def StartBruteAccount(Passlist,account,SMTPServer,Count,_Count,Time):
 					print("Error: " + str(e))
 
 def StartSMTPServiceForGmail():
-	SMTPServer = smtplib.SMTP('smtp.gmail.com', 587)
+	SMTPServer = smtplib.SMTP_SSL('smtp.gmail.com', 587)
 	SMTPServer.ehlo()
-	SMTPServer.starttls()
+	SMTPServer.set_debuglevel(2)
+	# SMTPServer.getreply()
+	print("SMTPServerEHLOOOOOO=================================>",SMTPServer.ehlo())
+	print('PRINTING SMTP SERVER STATUS ========================>',SMTPServer)
+	# SMTPServer.starttls()
 	return SMTPServer
 
 def HelpGuide():
